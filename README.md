@@ -78,14 +78,16 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 ## 📁 Project Structure
 
 ```
-portfolio/
-├── index.html          # Main HTML structure
-├── styles.css          # Enhanced CSS with cybersecurity theme
-├── main.js            # JavaScript functionality and security features
-├── Me.jpg             # Profile image
-├── Favicon.ico        # Site favicon
-├── Port_resume.pdf    # Resume document
-└── README.md          # Project documentation
+Portfolio-site/
+├── index.html              # Main HTML file
+├── css/
+│   └── styles.css         # CSS styles
+├── js/
+│   └── main.js           # JavaScript functionality  
+├── images/
+│   └── profile.jpg       # profile photo 
+├── favicon.ico           # Website icon
+└── README.md            # Project documentation
 ```
 
 ## 🛠️ Quick Setup
@@ -108,21 +110,12 @@ git push origin main
 # 2. Enable Pages in repo settings
 # 3. Visit https://yourusername.github.io/repository-name
 ```
-
-### **Vercel** (Fast & Easy)
-1. Connect your GitHub repository
-2. Deploy automatically on every push
-3. Custom domain support included
-
 ### **Netlify** (Feature Rich)
 1. Drag & drop your folder, or
 2. Connect GitHub for continuous deployment
 3. Built-in form handling and analytics
 
-### **Traditional Hosting**
-1. Upload files via FTP/SFTP
-2. Ensure HTTPS is enabled
-3. Configure security headers
+
 
 ## 🔐 Security Implementation Details
 
@@ -204,7 +197,7 @@ Found a bug or have a suggestion? Contributions are welcome!
 - 📧 **Email**: [adpersonals@gmail.com](mailto:adpersonals@gmail.com)
 - 💼 **LinkedIn**: [Adrian Davis](https://www.linkedin.com/in/adrian-davis-bb6b82222/)
 - 💻 **GitHub**: [@DavisAdrian](https://github.com/DavisAdrian)
-- 🌐 **Portfolio**: [davisadrian.github.io](https://davisadrian.github.io/personal-website/)
+- 🌐 **Portfolio**: [davisadrian.github.io](https://davisadrian.github.io/Portfolio-site/)
 
 ## 📄 License
 
