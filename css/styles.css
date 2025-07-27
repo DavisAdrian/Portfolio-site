@@ -1,4 +1,4 @@
-/* Enhanced CSS with cybersecurity theme */
+/* Cybersecurity-themed color palette and core variables */
 :root {
     --bg-color: #0a0a0a;
     --bg-secondary: #111111;
@@ -11,7 +11,6 @@
     --glow: 0 0 20px rgba(0, 255, 136, 0.3);
 }
 
-/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -31,7 +30,7 @@ body {
     position: relative;
 }
 
-/* Matrix background effect */
+/* Matrix-style background effect for cybersecurity theme */
 .matrix-bg {
     position: fixed;
     top: 0;
@@ -69,7 +68,7 @@ section {
     position: relative;
 }
 
-/* Header Styles */
+/* Adaptive header with blur effect and security-themed styling */
 header {
     position: fixed;
     top: 0;
@@ -146,7 +145,6 @@ header.scrolled {
     color: var(--accent-color);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -214,7 +212,6 @@ header.scrolled {
     transform: translateY(-3px);
 }
 
-/* Section Titles */
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 50px;
@@ -233,7 +230,6 @@ header.scrolled {
     margin-left: 20px;
 }
 
-/* About Section */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -272,6 +268,7 @@ header.scrolled {
     z-index: 2;
 }
 
+/* Creative border effect for profile image */
 .profile-pic::after {
     content: '';
     position: absolute;
@@ -295,7 +292,6 @@ header.scrolled {
     box-shadow: var(--glow);
 }
 
-/* Skills Section */
 .skills-matrix {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -347,7 +343,6 @@ header.scrolled {
     box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
 }
 
-/* Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -368,6 +363,7 @@ header.scrolled {
     flex-direction: column;
 }
 
+/* Security-themed accent stripe for project cards */
 .project-card::before {
     content: '';
     position: absolute;
@@ -442,7 +438,6 @@ header.scrolled {
     font-family: 'Fira Code', monospace;
 }
 
-/* Contact Section */
 .contact {
     text-align: center;
     background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
@@ -500,7 +495,6 @@ header.scrolled {
     box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-/* Footer */
 footer {
     padding: 50px 0;
     text-align: center;
@@ -525,7 +519,7 @@ footer {
     text-shadow: var(--glow);
 }
 
-/* Security Badge */
+/* Animated security badge - shows security commitment */
 .security-badge {
     position: fixed;
     bottom: 20px;
@@ -548,7 +542,7 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
 }
 
-/* Animation Classes */
+/* Intersection Observer animation classes */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -560,7 +554,6 @@ footer {
     transform: translateY(0);
 }
 
-/* Loading State */
 body.loaded {
     animation: fadeInBody 0.5s ease-in;
 }
@@ -570,7 +563,7 @@ body.loaded {
     to { opacity: 1; }
 }
 
-/* Responsive Styles */
+/* Responsive breakpoints for optimal viewing across devices */
 @media (max-width: 1024px) {
     .about-grid {
         grid-template-columns: 1fr;
@@ -587,6 +580,7 @@ body.loaded {
         display: block;
     }
     
+    /* Mobile navigation with slide-in effect */
     .nav-links {
         position: fixed;
         top: 0;
