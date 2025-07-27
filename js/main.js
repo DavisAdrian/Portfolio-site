@@ -1,6 +1,4 @@
-// Enhanced JavaScript with security focus
-
-// Matrix background effect
+// Enhanced Matrix background with authentic cybersecurity aesthetic
 function createMatrixBackground() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -10,7 +8,7 @@ function createMatrixBackground() {
     canvas.height = window.innerHeight;
     matrixBg.appendChild(canvas);
     
-    // Enhanced matrix characters including Japanese katakana for authentic Matrix feel
+    // Matrix characters including Japanese katakana for authentic Matrix feel
     const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン@#$%^&*()_+-=[]{}|\\:;\"'<>?,./~`";
     const matrixArray = matrix.split("");
     
@@ -18,17 +16,14 @@ function createMatrixBackground() {
     const columns = Math.floor(canvas.width / fontSize);
     const drops = [];
     
-    // Initialize drops
     for (let x = 0; x < columns; x++) {
         drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
     }
     
     function draw() {
-        // Create trailing effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Set text properties
         ctx.font = fontSize + 'px "Fira Code", "Courier New", monospace';
         ctx.textAlign = 'center';
         
@@ -37,7 +32,7 @@ function createMatrixBackground() {
             const x = i * fontSize + fontSize / 2;
             const y = drops[i] * fontSize;
             
-            // Create gradient effect - brighter at the leading edge
+            // Gradient effect for authentic matrix appearance
             const gradient = ctx.createLinearGradient(0, y - fontSize * 10, 0, y);
             gradient.addColorStop(0, 'rgba(0, 255, 136, 0.1)');
             gradient.addColorStop(0.5, 'rgba(0, 255, 136, 0.6)');
@@ -46,13 +41,11 @@ function createMatrixBackground() {
             ctx.fillStyle = gradient;
             ctx.fillText(text, x, y);
             
-            // Add extra bright leading character
             if (Math.random() > 0.98) {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
                 ctx.fillText(text, x, y);
             }
             
-            // Reset drop to top randomly
             if (y > canvas.height && Math.random() > 0.975) {
                 drops[i] = 0;
             }
@@ -63,15 +56,12 @@ function createMatrixBackground() {
     
     const matrixInterval = setInterval(draw, 50);
     
-    // Resize handler
     function handleResize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
-        // Recalculate columns
         const newColumns = Math.floor(canvas.width / fontSize);
         if (newColumns !== columns) {
-            // Adjust drops array
             while (drops.length < newColumns) {
                 drops.push(Math.floor(Math.random() * canvas.height / fontSize));
             }
@@ -83,20 +73,17 @@ function createMatrixBackground() {
     
     window.addEventListener('resize', handleResize);
     
-    // Cleanup function
     return () => {
         clearInterval(matrixInterval);
         window.removeEventListener('resize', handleResize);
     };
 }
 
-// Initialize matrix background
 let cleanupMatrix;
 document.addEventListener('DOMContentLoaded', () => {
     cleanupMatrix = createMatrixBackground();
 });
 
-// Enhanced scroll animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px"
@@ -111,14 +98,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all fade-in elements
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
     });
 });
 
-// Enhanced header scroll effect
+// Adaptive header with performance-optimized scroll handling
 const header = document.getElementById('header');
 let lastScrollY = window.scrollY;
 let ticking = false;
@@ -132,7 +118,6 @@ function updateHeader() {
         header.classList.remove('scrolled');
     }
     
-    // Hide header on scroll down, show on scroll up
     if (currentScrollY > lastScrollY && currentScrollY > 200) {
         header.style.transform = 'translateY(-100%)';
     } else {
@@ -150,7 +135,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile menu functionality
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -163,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 : '<i class="fas fa-bars"></i>';
         });
         
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -171,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 navLinks.classList.remove('active');
@@ -181,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -201,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Dynamic typing effect for terminal prompt
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -216,7 +196,6 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize typing effect when page loads
 window.addEventListener('load', () => {
     const terminalPrompt = document.querySelector('.terminal-prompt');
     if (terminalPrompt) {
@@ -226,7 +205,7 @@ window.addEventListener('load', () => {
     }
 });
 
-// Security badge click functionality
+// Security badge functionality - showcases security features
 document.addEventListener('DOMContentLoaded', () => {
     const securityBadge = document.querySelector('.security-badge');
     if (securityBadge) {
@@ -247,27 +226,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form security enhancements
+// Enhanced form security with XSS prevention and real-time validation
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.contact-form');
     if (form) {
-        // Input sanitization
         const inputs = form.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('input', function() {
-                // Basic XSS prevention
+                // XSS prevention - sanitize dangerous content
                 this.value = this.value.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
                 this.value = this.value.replace(/javascript:/gi, '');
                 this.value = this.value.replace(/on\w+=/gi, '');
             });
             
-            // Real-time validation
             input.addEventListener('blur', function() {
                 validateInput(this);
             });
         });
         
-        // Email validation
         const emailInput = form.querySelector('input[type="email"]');
         if (emailInput) {
             emailInput.addEventListener('input', function() {
@@ -282,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Input validation function
 function validateInput(input) {
     const value = input.value.trim();
     
@@ -303,7 +278,7 @@ function validateInput(input) {
     return true;
 }
 
-// Konami code easter egg for security professionals
+// Konami code easter egg - security professional appreciation feature
 let konamiCode = [];
 const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up Up Down Down Left Right Left Right B A
 
@@ -312,7 +287,6 @@ document.addEventListener('keydown', (e) => {
     konamiCode = konamiCode.slice(-10);
     
     if (konamiCode.join('') === konamiSequence.join('')) {
-        // Easter egg animation
         document.body.style.filter = 'hue-rotate(180deg)';
         document.body.style.transition = 'filter 0.5s ease';
         
@@ -339,7 +313,6 @@ function showEasterEgg() {
     alert(randomMessage);
 }
 
-// Performance optimization: Lazy load images
 document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('img');
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -358,10 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
     images.forEach(img => imageObserver.observe(img));
 });
 
-// Security monitoring (basic client-side logging)
+// Basic client-side security monitoring for demonstration
 let securityEvents = [];
 
-// Monitor for potential XSS attempts
 window.addEventListener('error', (e) => {
     if (e.message.includes('script') || e.message.includes('eval')) {
         securityEvents.push({
@@ -376,7 +348,7 @@ window.addEventListener('error', (e) => {
     }
 });
 
-// Monitor for console access (basic protection)
+// Developer tools detection with friendly security message
 let devtools = {
     open: false,
     orientation: null
@@ -397,7 +369,6 @@ setInterval(() => {
     }
 }, 500);
 
-// Add subtle animations to skill tags
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.skill-tag').forEach(tag => {
         tag.addEventListener('mouseenter', function() {
@@ -412,11 +383,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Progressive loading indicator
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
-    // Cleanup matrix background if needed on page unload
     window.addEventListener('beforeunload', () => {
         if (cleanupMatrix) {
             cleanupMatrix();
@@ -424,9 +393,8 @@ window.addEventListener('load', () => {
     });
 });
 
-// Accessibility enhancements
+// Accessibility enhancements for keyboard navigation
 document.addEventListener('DOMContentLoaded', () => {
-    // Add focus indicators for keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
             document.body.classList.add('keyboard-navigation');
@@ -437,7 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove('keyboard-navigation');
     });
     
-    // Add aria-labels to external links
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
         if (!link.getAttribute('aria-label')) {
             link.setAttribute('aria-label', `${link.textContent} (opens in new tab)`);
@@ -445,13 +412,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Preload critical resources
 document.addEventListener('DOMContentLoaded', () => {
-    // Preload profile image
     const profileImg = new Image();
     profileImg.src = 'images/profile.jpg';
     
-    // Preload important fonts
     const fontPreload = document.createElement('link');
     fontPreload.rel = 'preload';
     fontPreload.href = 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
@@ -459,13 +423,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(fontPreload);
 });
 
-// Error handling for production
+// Production error handling
 window.addEventListener('error', (e) => {
     console.error('Application Error:', e.error);
-    // In production, you might want to send this to a logging service
 });
 
 window.addEventListener('unhandledrejection', (e) => {
     console.error('Unhandled Promise Rejection:', e.reason);
-    // In production, you might want to send this to a logging service
 });
