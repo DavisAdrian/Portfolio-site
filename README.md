@@ -18,14 +18,14 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ </adrian>                              About Skills Projects │
+│ </adrian>                              About Skills Projects│
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  $ whoami                    ████████████████████████████   │
 │  Adrian Davis               ██ MATRIX DIGITAL RAIN ██████   │
-│  Cybersecurity Engineer     ████████████████████████████   │
-│                             ████████████████████████████   │
-│  Passionate about securing digital infrastructures...      │
+│  Cybersecurity Engineer     ████████████████████████████    │
+│                             ████████████████████████████    │
+│  Passionate about securing digital infrastructures...       │
 │                                                             │
 │  [Explore Arsenal]                                          │
 │                                                             │
