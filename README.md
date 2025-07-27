@@ -218,7 +218,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 | Resource | Link |
 |----------|------|
-| 🌐 **Live Portfolio** | [davisadrian.github.io](https://davisadrian.github.io/personal-website/) |
+| 🌐 **Live Portfolio** | [davisadrian.github.io](https://davisadrian.github.io/Portfolio-site/) |
 | 📂 **GitHub Repo** | [github.com/DavisAdrian](https://github.com/DavisAdrian) |
 | 📧 **Email** | [adpersonals@gmail.com](mailto:adpersonals@gmail.com) |
 | 📄 **Resume** | [View Resume](https://docs.google.com/document/d/1IvSBiVF9rluQcv2cn8_MB2Zpo5y8WH0I/edit) |
