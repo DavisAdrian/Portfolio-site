@@ -161,7 +161,6 @@ input.addEventListener('input', function() {
 ### **Konami Code** 
 - **Sequence**: ↑ ↑ ↓ ↓ ← → ← → B A
 - **Effect**: Color-shifting animation + congratulatory message
-- **Purpose**: Shows attention to detail and developer culture awareness
 
 ### **Security Badge**
 - **Location**: Bottom right corner
