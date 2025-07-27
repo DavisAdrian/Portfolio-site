@@ -305,8 +305,8 @@ function showEasterEgg() {
     const easterEggMessages = [
         "🕵️ Congratulations! You found the security professional's easter egg!",
         "🛡️ You've got the skills of a true cybersecurity expert!",
-        "🔍 Your attention to detail is exactly what we need in security!",
-        "⚡ Nice work! Ready to join the cyber defense team?"
+        "🔍 You might be a gamer!",
+        "⚡ Nice work! Let me know when you find the next easter egg!"
     ];
     
     const randomMessage = easterEggMessages[Math.floor(Math.random() * easterEggMessages.length)];
