@@ -110,11 +110,6 @@ git push origin main
 # 2. Enable Pages in repo settings
 # 3. Visit https://yourusername.github.io/repository-name
 ```
-### **Netlify** (Feature Rich)
-1. Drag & drop your folder, or
-2. Connect GitHub for continuous deployment
-3. Built-in form handling and analytics
-
 
 
 ## 🔐 Security Implementation Details
