@@ -18,11 +18,11 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ </adrian>                              About Skills Projects│
+│ </adrian>                       About Skills Projects Resume│
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  $ whoami                    ████████████████████████████   │
-│  Adrian Davis               ██ MATRIX DIGITAL RAIN ██████   │
+│  $ whoami                   ████████████████████████████    │
+│  Adrian Davis               ██ MATRIX DIGITAL RAIN █████    │
 │  Cybersecurity Engineer     ████████████████████████████    │
 │                             ████████████████████████████    │
 │  Passionate about securing digital infrastructures...       │
@@ -85,7 +85,7 @@ Portfolio-site/
 ├── js/
 │   └── main.js           # JavaScript functionality  
 ├── images/
-│   └── profile.jpg       # profile photo 
+│   └── profile.jpg       # My profile photo 
 ├── favicon.ico           # Website icon
 └── README.md            # Project documentation
 ```
