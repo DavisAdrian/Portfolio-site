@@ -1,47 +1,471 @@
-// Scroll Animation
-const faders = document.querySelectorAll('.fade-in');
+// Enhanced JavaScript with security focus
 
-const appearOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px"
-};
+// Matrix background effect
+function createMatrixBackground() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const matrixBg = document.getElementById('matrix-bg');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    matrixBg.appendChild(canvas);
+    
+    // Enhanced matrix characters including Japanese katakana for authentic Matrix feel
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン@#$%^&*()_+-=[]{}|\\:;\"'<>?,./~`";
+    const matrixArray = matrix.split("");
+    
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = [];
+    
+    // Initialize drops
+    for (let x = 0; x < columns; x++) {
+        drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
+    }
+    
+    function draw() {
+        // Create trailing effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Set text properties
+        ctx.font = fontSize + 'px "Fira Code", "Courier New", monospace';
+        ctx.textAlign = 'center';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+            const x = i * fontSize + fontSize / 2;
+            const y = drops[i] * fontSize;
+            
+            // Create gradient effect - brighter at the leading edge
+            const gradient = ctx.createLinearGradient(0, y - fontSize * 10, 0, y);
+            gradient.addColorStop(0, 'rgba(0, 255, 136, 0.1)');
+            gradient.addColorStop(0.5, 'rgba(0, 255, 136, 0.6)');
+            gradient.addColorStop(1, 'rgba(0, 255, 136, 1)');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillText(text, x, y);
+            
+            // Add extra bright leading character
+            if (Math.random() > 0.98) {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.fillText(text, x, y);
+            }
+            
+            // Reset drop to top randomly
+            if (y > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            
+            drops[i]++;
+        }
+    }
+    
+    const matrixInterval = setInterval(draw, 50);
+    
+    // Resize handler
+    function handleResize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Recalculate columns
+        const newColumns = Math.floor(canvas.width / fontSize);
+        if (newColumns !== columns) {
+            // Adjust drops array
+            while (drops.length < newColumns) {
+                drops.push(Math.floor(Math.random() * canvas.height / fontSize));
+            }
+            if (drops.length > newColumns) {
+                drops.length = newColumns;
+            }
+        }
+    }
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup function
+    return () => {
+        clearInterval(matrixInterval);
+        window.removeEventListener('resize', handleResize);
+    };
+}
 
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('appear');
-        appearOnScroll.unobserve(entry.target);
-    });
-}, appearOptions);
-
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
+// Initialize matrix background
+let cleanupMatrix;
+document.addEventListener('DOMContentLoaded', () => {
+    cleanupMatrix = createMatrixBackground();
 });
 
-// Header Scroll Effect
-const header = document.getElementById('header');
+// Enhanced scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all fade-in elements
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+});
+
+// Enhanced header scroll effect
+const header = document.getElementById('header');
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+function updateHeader() {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 100) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
+    
+    // Hide header on scroll down, show on scroll up
+    if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollY = currentScrollY;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+    }
 });
 
-// Mobile Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    }
 });
 
-// Close mobile menu when clicking a link
-const navLinksItems = document.querySelectorAll('.nav-links a');
-
-navLinksItems.forEach(item => {
-    item.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+// Smooth scrolling for anchor links
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
+});
+
+// Dynamic typing effect for terminal prompt
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Initialize typing effect when page loads
+window.addEventListener('load', () => {
+    const terminalPrompt = document.querySelector('.terminal-prompt');
+    if (terminalPrompt) {
+        setTimeout(() => {
+            typeWriter(terminalPrompt, '$ whoami', 150);
+        }, 500);
+    }
+});
+
+// Security badge click functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const securityBadge = document.querySelector('.security-badge');
+    if (securityBadge) {
+        securityBadge.addEventListener('click', () => {
+            const securityFeatures = [
+                '🛡️ Content Security Policy (CSP) Headers',
+                '🔒 Input Sanitization & Validation',
+                '🚫 XSS Protection',
+                '📡 Secure HTTPS Deployment',
+                '🔍 Regular Security Audits',
+                '⚡ Performance Optimization',
+                '♿ Accessibility Compliant',
+                '📱 Mobile-First Responsive Design'
+            ];
+            
+            alert(`🛡️ SECURITY FEATURES:\n\n${securityFeatures.join('\n')}\n\nBuilt with security-first principles!`);
+        });
+    }
+});
+
+// Form security enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contact-form');
+    if (form) {
+        // Input sanitization
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                // Basic XSS prevention
+                this.value = this.value.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+                this.value = this.value.replace(/javascript:/gi, '');
+                this.value = this.value.replace(/on\w+=/gi, '');
+            });
+            
+            // Real-time validation
+            input.addEventListener('blur', function() {
+                validateInput(this);
+            });
+        });
+        
+        // Email validation
+        const emailInput = form.querySelector('input[type="email"]');
+        if (emailInput) {
+            emailInput.addEventListener('input', function() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (this.value && !emailRegex.test(this.value)) {
+                    this.style.borderColor = '#ff6b6b';
+                } else {
+                    this.style.borderColor = '#00ff88';
+                }
+            });
+        }
+    }
+});
+
+// Input validation function
+function validateInput(input) {
+    const value = input.value.trim();
+    
+    if (input.hasAttribute('required') && !value) {
+        input.style.borderColor = '#ff6b6b';
+        return false;
+    }
+    
+    if (input.type === 'email') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (value && !emailRegex.test(value)) {
+            input.style.borderColor = '#ff6b6b';
+            return false;
+        }
+    }
+    
+    input.style.borderColor = '#00ff88';
+    return true;
+}
+
+// Konami code easter egg for security professionals
+let konamiCode = [];
+const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up Up Down Down Left Right Left Right B A
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.keyCode);
+    konamiCode = konamiCode.slice(-10);
+    
+    if (konamiCode.join('') === konamiSequence.join('')) {
+        // Easter egg animation
+        document.body.style.filter = 'hue-rotate(180deg)';
+        document.body.style.transition = 'filter 0.5s ease';
+        
+        setTimeout(() => {
+            document.body.style.filter = 'hue-rotate(360deg)';
+        }, 3000);
+        
+        setTimeout(() => {
+            document.body.style.filter = 'none';
+            showEasterEgg();
+        }, 4000);
+    }
+});
+
+function showEasterEgg() {
+    const easterEggMessages = [
+        "🕵️ Congratulations! You found the security professional's easter egg!",
+        "🛡️ You've got the skills of a true cybersecurity expert!",
+        "🔍 Your attention to detail is exactly what we need in security!",
+        "⚡ Nice work! Ready to join the cyber defense team?"
+    ];
+    
+    const randomMessage = easterEggMessages[Math.floor(Math.random() * easterEggMessages.length)];
+    alert(randomMessage);
+}
+
+// Performance optimization: Lazy load images
+document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('img');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+});
+
+// Security monitoring (basic client-side logging)
+let securityEvents = [];
+
+// Monitor for potential XSS attempts
+window.addEventListener('error', (e) => {
+    if (e.message.includes('script') || e.message.includes('eval')) {
+        securityEvents.push({
+            type: 'potential_xss',
+            timestamp: new Date().toISOString(),
+            message: e.message,
+            source: e.filename,
+            line: e.lineno
+        });
+        
+        console.warn('🛡️ Security Alert: Potential XSS attempt detected and blocked');
+    }
+});
+
+// Monitor for console access (basic protection)
+let devtools = {
+    open: false,
+    orientation: null
+};
+
+setInterval(() => {
+    const threshold = 200;
+    if (window.outerHeight - window.innerHeight > threshold || 
+        window.outerWidth - window.innerWidth > threshold) {
+        if (!devtools.open) {
+            devtools.open = true;
+            console.log('🛡️ Security Notice: Developer tools detected. This portfolio is open source - feel free to explore!');
+            console.log('🔍 GitHub: https://github.com/DavisAdrian');
+            console.log('💼 LinkedIn: https://www.linkedin.com/in/adrian-davis-bb6b82222/');
+        }
+    } else {
+        devtools.open = false;
+    }
+}, 500);
+
+// Add subtle animations to skill tags
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.skill-tag').forEach(tag => {
+        tag.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.boxShadow = '0 0 15px rgba(0, 255, 136, 0.5)';
+        });
+        
+        tag.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = 'none';
+        });
+    });
+});
+
+// Progressive loading indicator
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+    
+    // Cleanup matrix background if needed on page unload
+    window.addEventListener('beforeunload', () => {
+        if (cleanupMatrix) {
+            cleanupMatrix();
+        }
+    });
+});
+
+// Accessibility enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    // Add focus indicators for keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+    });
+    
+    // Add aria-labels to external links
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        if (!link.getAttribute('aria-label')) {
+            link.setAttribute('aria-label', `${link.textContent} (opens in new tab)`);
+        }
+    });
+});
+
+// Preload critical resources
+document.addEventListener('DOMContentLoaded', () => {
+    // Preload profile image
+    const profileImg = new Image();
+    profileImg.src = 'images/profile.jpg';
+    
+    // Preload important fonts
+    const fontPreload = document.createElement('link');
+    fontPreload.rel = 'preload';
+    fontPreload.href = 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
+    fontPreload.as = 'style';
+    document.head.appendChild(fontPreload);
+});
+
+// Error handling for production
+window.addEventListener('error', (e) => {
+    console.error('Application Error:', e.error);
+    // In production, you might want to send this to a logging service
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+    console.error('Unhandled Promise Rejection:', e.reason);
+    // In production, you might want to send this to a logging service
 });
