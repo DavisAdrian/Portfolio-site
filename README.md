@@ -1,16 +1,16 @@
 # 🛡️ Adrian Davis - Cybersecurity Portfolio
 
-> *"Securing the digital frontier, one line of code at a time."*
+> *"Building resilient code to protect the future of technology."*
 
 A modern, security-focused portfolio website showcasing cybersecurity expertise and software engineering skills. Built with security-first principles, featuring an authentic Matrix-inspired design and optimized for performance.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Live-00ff88?style=for-the-badge&logo=github)](https://davisadrian.github.io/personal-website/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live-00ff88?style=for-the-badge&logo=github)](https://davisadrian.github.io/Portfolio-site/)
 [![Security](https://img.shields.io/badge/Security-First-ff6b6b?style=for-the-badge&logo=shield)](https://github.com/DavisAdrian)
-[![Responsive](https://img.shields.io/badge/Mobile-Responsive-blue?style=for-the-badge&logo=mobile)](https://davisadrian.github.io/personal-website/)
+[![Responsive](https://img.shields.io/badge/Mobile-Responsive-blue?style=for-the-badge&logo=mobile)](https://davisadrian.github.io/Portfolio-site/)
 
 ## 🚀 Live Demo
 
-**[👉 View Portfolio](https://davisadrian.github.io/personal-website/)**
+**[👉 View Portfolio](https://davisadrian.github.io/Portfolio-site/)**
 
 *Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A for a surprise!* 🎮
 
@@ -41,8 +41,6 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 - ✅ **HTTPS enforcement** ready
 - ✅ **Input validation** and real-time sanitization
 - ✅ **Security monitoring** and error logging
-- ✅ **No inline scripts** (external files only)
-- ✅ **Secure external links** with `rel="noopener"`
 
 ### 🎨 **Design Features**
 - 🎬 **Authentic Matrix digital rain** with Japanese katakana
@@ -66,7 +64,6 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 - ⌨️ **Keyboard navigation** support
 - 📢 **Screen reader friendly** with proper ARIA
 - 🔍 **Focus indicators** for keyboard users
-- 🏷️ **Semantic HTML structure**
 - 🎨 **High contrast** color ratios
 - 📝 **Descriptive alt text** for images
 
@@ -82,15 +79,13 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 
 ```
 portfolio/
-├── 📄 index.html              # Main HTML file with security headers
-├── 📁 css/
-│   └── 🎨 styles.css         # Modular CSS with custom properties
-├── 📁 js/
-│   └── ⚡ main.js           # Enhanced JavaScript with security features
-├── 📁 images/
-│   └── 🖼️ profile.jpg       # Profile image (300x300px recommended)
-├── 🔗 favicon.ico           # Website favicon
-└── 📖 README.md            # This comprehensive guide
+├── index.html          # Main HTML structure
+├── styles.css          # Enhanced CSS with cybersecurity theme
+├── main.js            # JavaScript functionality and security features
+├── Me.jpg             # Profile image
+├── Favicon.ico        # Site favicon
+├── Port_resume.pdf    # Resume document
+└── README.md          # Project documentation
 ```
 
 ## 🛠️ Quick Setup
@@ -99,84 +94,6 @@ portfolio/
 ```bash
 git clone https://github.com/DavisAdrian/portfolio.git
 cd portfolio
-```
-
-### 2️⃣ **Add Your Content**
-- 📸 Replace `images/profile.jpg` with your photo (300x300px)
-- ✏️ Update personal info in `index.html`
-- 🔗 Update social links and resume URL
-- 📝 Customize projects and skills sections
-
-### 3️⃣ **Deploy**
-- 🚀 Push to GitHub and enable Pages
-- 🌐 Or deploy to Vercel/Netlify
-- 📡 Configure HTTPS and security headers
-
-## 🎨 Customization Guide
-
-### **Personal Information**
-Update these sections in `index.html`:
-
-```html
-<!-- Hero Section -->
-<h1>Your Name</h1>
-<h2>Your Title</h2>
-<p class="hero-description">Your description...</p>
-
-<!-- Resume Link -->
-<a href="YOUR_RESUME_URL" class="btn">Resume</a>
-
-<!-- Social Links -->
-<a href="YOUR_GITHUB">GitHub</a>
-<a href="YOUR_LINKEDIN">LinkedIn</a>
-<a href="mailto:YOUR_EMAIL">Email</a>
-```
-
-### **Color Scheme**
-Modify CSS variables in `css/styles.css`:
-
-```css
-:root {
-    --bg-color: #0a0a0a;           /* Main background */
-    --accent-color: #00ff88;        /* Cyber green accent */
-    --text-color: #f5f5f5;         /* Primary text */
-    --secondary-color: #8892b0;     /* Secondary text */
-    --bg-secondary: #111111;        /* Card backgrounds */
-}
-```
-
-### **Skills & Technologies**
-Update the skills matrix with your expertise:
-
-```html
-<div class="skill-category">
-    <h3><i class="fas fa-shield-alt"></i> Your Category</h3>
-    <div class="skill-tags">
-        <span class="skill-tag">Your Skill</span>
-        <!-- Add more skills -->
-    </div>
-</div>
-```
-
-### **Projects Showcase**
-Add your projects with:
-
-```html
-<div class="project-card fade-in">
-    <div class="project-top">
-        <div class="project-icon">🔐</div>
-        <div class="project-links">
-            <a href="DEMO_URL" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-            <a href="GITHUB_URL" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-    </div>
-    <h3 class="project-title">Project Name</h3>
-    <p class="project-description">Project description...</p>
-    <div class="project-tech">
-        <span class="tech-tag">Technology</span>
-        <!-- Add more tech tags -->
-    </div>
-</div>
 ```
 
 ## 🚀 Deployment Options
@@ -234,16 +151,6 @@ input.addEventListener('input', function() {
 - ✅ X-Frame-Options: DENY
 - ✅ X-XSS-Protection: 1; mode=block
 - ✅ Referrer-Policy: strict-origin-when-cross-origin
-
-## 📊 Performance Metrics
-
-| Metric | Target | Achieved |
-|--------|--------|----------|
-| Lighthouse Performance | 90+ | 95+ |
-| First Contentful Paint | < 2s | < 1.5s |
-| Largest Contentful Paint | < 4s | < 2.5s |
-| Cumulative Layout Shift | < 0.1 | < 0.05 |
-| Time to Interactive | < 5s | < 3s |
 
 ## 🌐 Browser Compatibility
 
@@ -316,7 +223,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - 🎮 **Konami** for the legendary cheat code
 - 🎨 **Cyberpunk aesthetic** community
 - 🛡️ **Cybersecurity community** for best practices
-- ⚡ **Web performance** optimization guides
 - ♿ **Accessibility** standards and guidelines
 
 ---
@@ -327,7 +233,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 |----------|------|
 | 🌐 **Live Portfolio** | [davisadrian.github.io](https://davisadrian.github.io/personal-website/) |
 | 📂 **GitHub Repo** | [github.com/DavisAdrian](https://github.com/DavisAdrian) |
-| 💼 **LinkedIn** | [Adrian Davis](https://www.linkedin.com/in/adrian-davis-bb6b82222/) |
 | 📧 **Email** | [adpersonals@gmail.com](mailto:adpersonals@gmail.com) |
 | 📄 **Resume** | [View Resume](https://docs.google.com/document/d/1IvSBiVF9rluQcv2cn8_MB2Zpo5y8WH0I/edit) |
 
