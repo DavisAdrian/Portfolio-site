@@ -90,27 +90,6 @@ Portfolio-site/
 └── README.md            # Project documentation
 ```
 
-## 🛠️ Quick Setup
-
-### 1️⃣ **Clone & Setup**
-```bash
-git clone https://github.com/DavisAdrian/portfolio.git
-cd portfolio
-```
-
-## 🚀 Deployment Options
-
-### **GitHub Pages** (Recommended)
-```bash
-# 1. Push to GitHub
-git add .
-git commit -m "Initial portfolio commit"
-git push origin main
-
-# 2. Enable Pages in repo settings
-# 3. Visit https://yourusername.github.io/repository-name
-```
-
 
 ## 🔐 Security Implementation Details
 
