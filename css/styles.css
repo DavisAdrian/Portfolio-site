@@ -358,7 +358,7 @@ header.scrolled {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    height: 400px;
+    height: 525px;
     display: flex;
     flex-direction: column;
 }
