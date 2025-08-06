@@ -1,4 +1,4 @@
-// Enhanced Matrix background with authentic cybersecurity aesthetic
+// Enhanced Matrix background with cybersecurity aesthetic
 function createMatrixBackground() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
