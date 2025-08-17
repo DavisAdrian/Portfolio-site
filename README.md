@@ -23,7 +23,7 @@ A modern, security-focused portfolio website showcasing cybersecurity expertise 
 │                                                             │
 │  $ whoami                   ████████████████████████████    │
 │  Adrian Davis               ██ MATRIX DIGITAL RAIN █████    │
-│  Cybersecurity Engineer     ████████████████████████████    │
+│  Software Engineer          ████████████████████████████    │
 │                             ████████████████████████████    │
 │  Passionate about securing digital infrastructures...       │
 │                                                             │
