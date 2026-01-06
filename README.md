@@ -1,4 +1,4 @@
-# 🛡️ Adrian Davis - Cybersecurity Portfolio
+# 🛡️ Adrian Davis - Software/Security Engineer Portfolio
 
 > *"Building resilient code to protect the future of technology."*
 
