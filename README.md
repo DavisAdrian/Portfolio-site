@@ -193,15 +193,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 🎯 Quick Links
-
-| Resource | Link |
-|----------|------|
-| 🌐 **Live Portfolio** | [davisadrian.github.io](https://davisadrian.github.io/Portfolio-site/) |
-| 📂 **GitHub Repo** | [github.com/DavisAdrian](https://github.com/DavisAdrian) |
-| 📧 **Email** | [adpersonals@gmail.com](mailto:adpersonals@gmail.com) |
-
----
 
 <div align="center">
 
